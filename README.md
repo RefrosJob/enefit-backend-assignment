@@ -35,8 +35,7 @@ NOT DID:
 
 ## Usage
 
-I used IntelliJ Idea Ultimate's devcontainer setup, so you could navigate to <code>
-.devcontainer/devcontainer.json </code> and run it from there using <code>Create container and mount...</code> option.
+I used IntelliJ Idea Ultimate's devcontainer setup, so you could navigate to <code>.devcontainer/devcontainer.json </code> and run it from there using <code>Create container and mount...</code> option.
 
 Otherwise, this container should be openable through <code>docker-compose</code>.
 
@@ -45,7 +44,7 @@ Container itself already has a postgres installation together with a simple pg-a
 Within the container Gradle can be used to build and start the Application with
 <code>java/enefit_backend_assignment/EnefitBackendAssignmentApplication.java</code> root reference.
 
-The Application *SHOULD* default to forwarding port 8080 through the devcontainer, but in case it does and you can't
+The Application *SHOULD* default to forwarding port 8080 through the devcontainer, but in case it doesn't and you can't
 connect you might also work on Debian/Ubuntu based Linux repo and you have <code>ufw</code> enabled.
 
 You can turn it off by writing <code>sudo ufw disable</code> but I would suggest looking up the manual and allowing
