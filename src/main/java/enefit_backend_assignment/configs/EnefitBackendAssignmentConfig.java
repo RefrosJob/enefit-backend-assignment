@@ -1,6 +1,6 @@
-package enefit_backend_assignment.config;
+package enefit_backend_assignment.configs;
 
-import enefit_backend_assignment.config.filters.AuthenticationFilter;
+import enefit_backend_assignment.configs.filters.AuthenticationFilter;
 import enefit_backend_assignment.repositories.CustomerRepository;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +18,7 @@ public class EnefitBackendAssignmentConfig {
     @Bean
     public FilterRegistrationBean<AuthenticationFilter> headerValidatorFilter() {
         FilterRegistrationBean<AuthenticationFilter> registrationBean = new FilterRegistrationBean<>(getAuthenticationFilter());
-        registrationBean.addUrlPatterns("/customers");
+        registrationBean.addUrlPatterns("*");
         registrationBean.setOrder(1);
         return registrationBean;
     }

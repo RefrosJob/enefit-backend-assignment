@@ -1,4 +1,4 @@
-package enefit_backend_assignment.config.filters;
+package enefit_backend_assignment.configs.filters;
 
 import enefit_backend_assignment.repositories.CustomerRepository;
 import jakarta.servlet.FilterChain;
@@ -9,6 +9,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 public class AuthenticationFilter extends OncePerRequestFilter {
@@ -41,7 +42,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        if(!customerRepository.existsById(userId)) {
+        if (!customerRepository.existsById(userId)) {
             handleInvalidAuthentication(response, "No customer with id " + userId + " exists");
         }
 
@@ -52,5 +53,11 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         response.setContentType("application/json");
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.getWriter().write("{\"error_description\":\"" + description + "\"}");
+    }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getRequestURI();
+        return List.of("/is-registered", "/login", "/register", "*").contains(path);
     }
 }
